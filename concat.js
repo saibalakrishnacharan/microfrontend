@@ -9,5 +9,5 @@ const files = [
 console.log("test", files);
 await fs.ensureDir('./child');
 await concat(files, './child/child.js');
-await concat(files, '../parent/src/assets/child.js');
+await concat(files, '../microFrontEndforParent/src/assets/child.js');
 })()

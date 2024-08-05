@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import {FormlyFieldConfig} from '@ngx-formly/core';
 @Component({
@@ -6,34 +6,16 @@ import {FormlyFieldConfig} from '@ngx-formly/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'child';
-  form = new FormGroup({});
-  model = {};
-  fields: FormlyFieldConfig[] = [
-    {
-      key: 'email',
-      type: 'custom-input',
-      props: {
-        label: 'input label',
-        placeholder: 'Enter email',
-        required: true,
-      }
-    },
-    {
-      key: 'email1',
-      type: 'custom-email',
-      props: {
-        label: 'Email address',
-        placeholder: 'Enter email',
-        required: true,
-      }
-    }
-  ];
-  constructor(){
-    console.log("cons",this.model);
+export class AppComponent implements OnChanges {
+  @Input('title') title: any;
+  @Output() childEmitter = new EventEmitter();
+  name = ''
+
+  ngOnChanges(changes: SimpleChanges): void {
+      console.log("changes",this.title)
   }
-  onSubmit(model :any) {
-    console.log("dfghj",model);
+  onSubmit() {
+    console.log("dfghj",this.name);
+    this.childEmitter.emit(this.name)
   }
 }

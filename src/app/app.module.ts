@@ -1,6 +1,6 @@
 import { Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
@@ -21,7 +21,8 @@ import { EmailComponent } from './types/email/email.component';
     AppRoutingModule,
     ReactiveFormsModule,
    FormlyModule.forRoot(config),
-   FormlyBootstrapModule
+   FormlyBootstrapModule,
+   FormsModule
   ],
   providers: [],
   entryComponents:[AppComponent]
